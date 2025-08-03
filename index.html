@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jitware | Webdesign, SEO & AI-oplossingen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .result-item::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .logo-hover {
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.7;
+        }
+        .logo-hover:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .testimonial-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.1);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-indigo-600 font-bold text-2xl">Jitware</span>
+                </div>
+
+                <!-- desktop menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#diensten" class="text-gray-700 hover:text-indigo-600 px-3 py-2 font-medium">Diensten</a>
+                        <a href="#cases" class="text-gray-700 hover:text-indigo-600 px-3 py-2 font-medium">Cases</a>
+                        <a href="#blog" class="text-gray-700 hover:text-indigo-600 px-3 py-2 font-medium">Blog</a>
+                        <a href="#over-ons" class="text-gray-700 hover:text-indigo-600 px-3 py-2 font-medium">Over ons</a>
+                        <a href="#contact" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">Contact</a>
+                    </div>
+                </div>
+
+                <!-- mobile toggle button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- mobile menu (hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden flex-col space-y-2 px-4 pb-6 bg-white shadow-inner">
+            <a href="#diensten" class="block text-gray-700 hover:text-indigo-600">Diensten</a>
+            <a href="#cases" class="block text-gray-700 hover:text-indigo-600">Cases</a>
+            <a href="#blog" class="block text-gray-700 hover:text-indigo-600">Blog</a>
+            <a href="#over-ons" class="block text-gray-700 hover:text-indigo-600">Over ons</a>
+            <a href="#contact" class="block bg-indigo-600 text-white px-4 py-2 rounded-full text-center hover:bg-indigo-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Meer klanten dankzij strategische zichtbaarheid</h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">Wij combineren webdesign, SEO en AI om jouw bedrijf online te laten groeien</p>
+                    <div class="flex flex-col sm:flex-row gap-4 py-2">
+                        <a href="#contact" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-center hover:bg-gray-100 transition hover-scale">Vraag gratis analyse aan</a>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 py-2">
+                        <a href="#cases" class="bg-transparent border-2 border-white px-8 py-4 rounded-full font-bold text-center hover:bg-white hover:bg-opacity-10 transition hover-scale">Bekijk succescases</a>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 py-2">
+                        <a href="/meer-klanten" class="bg-transparent border-2 border-white px-8 py-4 rounded-full font-bold text-center hover:bg-white hover:bg-opacity-10 transition hover-scale">Ik wil meer klanten</a>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 py-2">
+                        <a href="/ai/ai-oplossingen" class="bg-transparent border-2 border-white px-8 py-4 rounded-full font-bold text-center hover:bg-white hover:bg-opacity-10 transition hover-scale">AI oplossingen</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                        <div class="video-container">
+                            <img src="https://placehold.co/1280x720/E0E7FF/4F46E5?text=Performance+Dashboard" alt="Performance dashboard" class="w-full h-auto">
+                        </div>
+                        <div class="p-6 bg-gray-50">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Dashboard klant </h3>
+                                    <p class="text-sm text-gray-600">Resultaten laatste maanden</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-green-600 font-bold text-xl">+247%</p>
+                                    <p class="text-xs text-gray-600">organisch verkeer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Rating Badge -->
+            <div class="text-center mb-16 animate-fade-in" style="animation-delay: 0.1s;">
+                <div class="inline-flex items-center bg-indigo-100 text-indigo-700 px-6 py-3 rounded-full shadow-sm">
+                    <i class="fas fa-star mr-2 text-yellow-400"></i>
+                    <span class="font-bold">Gemiddeld 4.9/5</span>
+                    <span class="mx-2 text-indigo-300">|</span>
+                    <span>45+ tevreden klanten</span>
+                    <i class="fas fa-heart ml-2 text-red-400"></i>
+                </div>
+            </div>
+
+            <!-- Trusted By Section -->
+            <div class="animate-fade-in" style="animation-delay: 0.2s;">
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 px-4">
+                    <div class="logo-hover">
+                        <a href="https://www.dedoncker.be" class="text-gray-700 text-lg font-medium hover:text-indigo-600 transition-colors">De Doncker</a>
+                    </div>
+                    <div class="logo-hover">
+                        <a href="https://www.ds-cleaning.be" class="text-gray-700 text-lg font-medium hover:text-indigo-600 transition-colors">DS Cleaning</a>
+                    </div>
+                    <div class="logo-hover">
+                        <a href="https://www.vissershofmere.be" class="text-gray-700 text-lg font-medium hover:text-indigo-600 transition-colors">Vissershof</a>
+                    </div>
+                    <div class="logo-hover">
+                        <a href="https://www.otentik-wellness.be" class="text-gray-700 text-lg font-medium hover:text-indigo-600 transition-colors">Otentik Wellness</a>
+                    </div>
+                    <div class="logo-hover">
+                        <a href="https://www.bvconell.be/" class="text-gray-700 text-lg font-medium hover:text-indigo-600 transition-colors">Conell BV</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial -->
+            <div class="mt-20 max-w-4xl mx-auto animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="testimonial-card bg-white p-8 rounded-xl border border-gray-100 relative">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left text-indigo-400"></i>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-start gap-6">
+                        <img class="photo w-12 h-12 rounded-full object-cover" src="https://placehold.co/64x64/E0E7FF/4F46E5?text=Ann"
+                             alt="Ann L. - Otentik Wellness"
+                             class="w-16 h-16 rounded-full object-cover ring-4 ring-indigo-50 shadow-sm">
+                        <div class="flex-1">
+                            <div class="flex mb-3">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 mb-4 italic leading-relaxed">
+                                "Jens is een zeer geduldige en hulpvaardige kerel om mee samen te werken. Niets is teveel voor hem.
+                                Altijd bereikbaar en werkt snel! Topkerel! Bedankt Jens!"
+                                <span class="block mt-2 text-indigo-400">💙 Fan van Jens 💙</span>
+                            </p>
+                            <div class="flex items-center">
+                                <div class="h-px bg-gray-200 flex-1 mr-4"></div>
+                                <p class="font-bold text-gray-700">Ann L.</p>
+                                <span class="mx-2 text-gray-400">|</span>
+                                <p class="text-gray-500">Otentik Wellness</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial Navigation Dots -->
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button class="w-3 h-3 rounded-full bg-indigo-300"></button>
+                    <button class="w-3 h-3 rounded-full bg-indigo-100"></button>
+                    <button class="w-3 h-3 rounded-full bg-indigo-100"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertises -->
+    <section id="diensten" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Onze expertises</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Alles wat je nodig hebt voor digitale groei, onder één dak</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-search service-icon text-indigo-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">SEO & webdesign</h3>
+                        <p class="text-gray-600 mb-6">We zorgen dat je site gevonden wordt én converteert. Van technische optimalisatie tot gebruiksvriendelijke interfaces.</p>
+                        <a href="#" class="text-indigo-600 font-medium inline-flex items-center hover:text-indigo-800">
+                            Meer over web & SEO
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="bg-gray-50 px-8 py-4">
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Technische SEO-audit</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Conversie-optimalisatie</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Responsief webdesign</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-video service-icon text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Video & grafisch ontwerp</h3>
+                        <p class="text-gray-600 mb-6">Trek aandacht en bouw merkherkenning op. Van professionele bedrijfsvideo's tot visuele identiteit.</p>
+                        <a href="#" class="text-purple-600 font-medium inline-flex items-center hover:text-purple-800">
+                            Bekijk video & designwerk
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="bg-gray-50 px-8 py-4">
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Bedrijfsvideo's</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Logo & huisstijl</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Social media content</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-robot service-icon text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">AI-oplossingen</h3>
+                        <p class="text-gray-600 mb-6">Automatiseer, schaal en innoveer met onze AI-integraties. Bespaar tijd en verhoog je productiviteit.</p>
+                        <a href="https://www.jitware.be/tools/" class="text-blue-600 font-medium inline-flex items-center hover:text-blue-800">
+                            Ontdek AI-tools
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="bg-gray-50 px-8 py-4">
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>AI-analyse</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Content generatie</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span>Generative Engine Optimization (GEO) & SGE</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="py-20 bg-indigo-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Resultaten waar het écht om draait</h2>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">We meten ons succes aan de hand van jouw groei</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm hover-scale">
+                    <div class="text-5xl font-bold mb-4">+75%</div>
+                    <h3 class="text-xl font-semibold mb-3">Meer bezoekers</h3>
+                    <p class="opacity-90">Gemiddelde stijging in organisch verkeer binnen 6 maanden voor onze SEO-klanten</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm hover-scale">
+                    <div class="text-5xl font-bold mb-4">Positie 1-3</div>
+                    <h3 class="text-xl font-semibold mb-3">In Google</h3>
+                    <p class="opacity-90">Van pagina 4 naar top 3 voor belangrijke zoektermen dankzij onze strategie</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm hover-scale">
+                    <div class="text-5xl font-bold mb-4">5% - 20%</div>
+                    <h3 class="text-xl font-semibold mb-3">Meer conversies</h3>
+                    <p class="opacity-90">Dankzij betere landingspagina's en gebruikerservaringen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Cases -->
+    <section id="cases" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Zij groeiden dankzij onze aanpak – jij straks ook?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Echte resultaten voor echte bedrijven</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Case 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition hover-scale">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=Website+van+Dendriessche" alt="Dakwerken van den Driessche case study" class="w-full h-34 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">SEO + Website</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Dakwerken Van den Driessche</h3>
+                        <p class="text-gray-600 mb-4">Website + Lokale SEO strategie </p>
+                        <p class="text-gray-700 mb-4"><strong>Van pagina 10 naar positie 2 in Google.</strong> Een spectaculaire stijging in vindbaarheid met een verdrievoudiging van aanvragen voor "dakwerken Aalst"</p>
+                        <a href="https://www.dakwerken-vandendriessche.be" target="_blank"  class="text-purple-600 font-medium inline-flex items-center hover:text-purple-800">
+                            Bekijk website
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="/seo/positie-91-naar-positie-2" target="_blank"  class="text-purple-600 font-medium inline-flex items-center hover:text-purple-800">
+                            Bekijk case
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Case 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition hover-scale">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=Website+De+Doncker" alt="De Doncker case study" class="w-full h-34 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">SEO + Redesign</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">De Doncker</h3>
+                        <p class="text-gray-600 mb-4">Van een verouderde trage website </p>
+                        <p class="text-gray-700 mb-4">naar een moderne geoptimaliseerde website</p>
+                        <a href="https://www.dedoncker.be" target="_blank"  class="text-purple-600 font-medium inline-flex items-center hover:text-purple-800">
+                            Bekijk website
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="/cases/website-seo-de-doncker" target="_blank"  class="text-purple-600 font-medium inline-flex items-center hover:text-purple-800">
+                            Bekijk case
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition hover-scale">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=Website+Otentik" alt="Otentik Wellness case study" class="w-full h-34 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">SEO + Boekingsmodule</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Otentik Wellness</h3>
+                        <p class="text-gray-600 mb-4">+230% bezoekers in 3 maanden</p>
+                        <p class="text-gray-700 mb-4">SEO + herontwerp website met online reserveringssysteem</p>
+                        <a href="https://www.otentik-wellness.be" target="_blank" class="text-indigo-600 font-medium inline-flex items-center hover:text-indigo-800">
+                            Bekijk website
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 hover-scale">
+                    Bekijk alle succescases
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Blog & Kennisbank</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Blijf op de hoogte van de laatste trends in webdesign, SEO en AI</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <a href="#" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition hover-scale">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=SEO+Tips" alt="SEO tips blog post image" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>15 juli 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">De 5 meest gemaakte SEO-fouten en hoe je ze vermijdt</h3>
+                        <p class="text-gray-600">Verbeter je online vindbaarheid door deze veelvoorkomende valkuilen te omzeilen.</p>
+                    </div>
+                </a>
+                <!-- Blog Post 2 -->
+                <a href="#" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition hover-scale">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=AI+Tools" alt="AI tools blog post image" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>10 juli 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Hoe AI jouw bedrijf kan transformeren</h3>
+                        <p class="text-gray-600">Ontdek hoe je AI-tools kunt inzetten om je productiviteit te verhogen en te innoveren.</p>
+                    </div>
+                </a>
+                <!-- Blog Post 3 -->
+                <a href="#" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition hover-scale">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=Webdesign+Trends" alt="Webdesign trends blog post image" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>5 juli 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">De webdesign trends van 2025: wat je moet weten</h3>
+                        <p class="text-gray-600">Blijf competitief met de nieuwste trends in gebruikerservaring en visueel design.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center mt-12">
+                <a href="/blog" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-100 hover-scale">
+                    Bekijk alle blogposts
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="over-ons" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Over Jitware</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">De partner voor jouw digitale groei</p>
+            </div>
+            <div class="md:flex items-center gap-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <p class="text-gray-700 text-lg mb-6">
+                        Bij Jitware geloven we dat een sterke online aanwezigheid de sleutel is tot succes.
+                        Onze missie is om bedrijven te helpen groeien door de perfecte mix van **professioneel webdesign**,
+                        **effectieve SEO-strategieën** en **innovatieve AI-oplossingen**.
+                    </p>
+                    <p class="text-gray-700 text-lg mb-6">
+                        We werken nauw samen met onze klanten om op maat gemaakte oplossingen te creëren die
+                        niet alleen mooi zijn, maar ook meetbare resultaten opleveren. Of je nu meer bezoekers,
+                        meer leads of meer efficiëntie nodig hebt, wij hebben de expertise in huis.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-indigo-600 text-base font-medium rounded-full text-indigo-600 bg-white hover:bg-indigo-50 hover-scale">
+                        Start jouw groeitraject
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=Ons+team" alt="Jitware team" class="rounded-xl shadow-2xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Klaar om te groeien?</h2>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">Vul het formulier in en ontvang een gratis en vrijblijvende analyse van je website</p>
+            </div>
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-2xl p-8 md:p-12">
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Naam</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">E-mailadres</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Bericht</label>
+                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-full font-bold hover:bg-indigo-700 transition hover-scale">Verstuur</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand Info -->
+                <div class="col-span-1">
+                    <h3 class="text-2xl font-bold mb-4">Jitware</h3>
+                    <p class="text-gray-400">Strategische webdesign, SEO & AI-oplossingen voor jouw groei.</p>
+                </div>
+                <!-- Nav Links -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Snelnavigatie</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#diensten" class="text-gray-400 hover:text-white transition">Diensten</a></li>
+                        <li><a href="#cases" class="text-gray-400 hover:text-white transition">Cases</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#over-ons" class="text-gray-400 hover:text-white transition">Over ons</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-indigo-400 mr-3 mt-1"></i>
+                            <a href="mailto:info@jitware.be" class="text-gray-400 hover:text-white transition">info@jitware.be</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-indigo-400 mr-3 mt-1"></i>
+                            <a href="tel:+32470000000" class="text-gray-400 hover:text-white transition">+32 470 00 00 00</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-indigo-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">Jitwarestraat 1, 9000 Gent</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Volg ons</h4>
+                    <div class="flex space-x-4 text-2xl">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2025 Jitware. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+            } else {
+                mobileMenu.classList.remove('flex');
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
